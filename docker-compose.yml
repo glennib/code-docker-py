@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  pydev:
+    hostname: pydev
+    container_name: pydev
+    build: .
+    image: pydev
+    volumes:
+      - ./dev:/root/dev
+      - ./config/ssh:/root/.ssh
+      - ./config/vscode-server:/root/.vscode-server
+    ports:
+      - "2222:22"
+    cap_add:
+      - "sys_ptrace"
